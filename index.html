@@ -10,10 +10,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-     <header>
-      <h1>PollyGlot</h1>
-      <p>Perfect Translation Every Time</p>
-     </header>
+     <div class="container">
+      <header>
+        <img class="parrot" src="/assets/parrot.png" />
+        <div class="header-text">
+          <h1>PollyGlot</h1>
+          <p>Perfect Translation Every Time</p>
+        </div>
+      </header>
+      <main>
+        <h2>Text to translate 👇</h2>
+        <textarea placeholder="How are you?"></textarea>
+        <h2>Select language 👇</h2>
+        <div class="language-container">
+          <input type="radio" id="french" name="language" value="French" class="language">
+          <label for="french">French</label>
+          <img src="/assets/fr-flag.png" class="flag" />
+        </div>
+        <div class="language-container">
+          <input type="radio" id="spanish" name="language" value="Spanish" class="language">
+          <label for="spanish">Spanish</label>
+          <img src="/assets/sp-flag.png" class="flag" />
+        </div>
+        <div class="language-container">
+          <input type="radio" id="japanese" name="language" value="Japanese" class="language">
+          <label for="japanese">Japanese</label>
+          <img src="/assets/jpn-flag.png" class="flag" />
+        </div>
+        <button class="translate-btn">Translate</button>
+      </main>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
