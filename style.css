@@ -71,18 +71,19 @@ main {
   padding: 10px 20px 46px;
 }
 
-main h2 {
+.section-title {
   color: #035a9d;
   font-size: 20px;
   text-align: center;
   margin-bottom: 5px;
 }
 
-main textarea {
+.section-textarea {
   font-family: Poppins, sans-serif;
   border-radius: 8px;
   background-color: #eff0f4;
   margin: 20px 0 5px 0;
+  width: 100%;
   align-items: start;
   font-weight: 600;
   padding: 20px 12px 79px;
