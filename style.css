@@ -5,14 +5,19 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Poppins, sans-serif;
+  background-color: #eff0f4;
 }
 
 .container {
   margin: 0 auto;
+  max-width: 390px;
   display: flex;
-  padding-bottom: 32px;
   flex-direction: column;
+  background-color: #fff;
+  font-family: Poppins, sans-serif;
+  font-size: 20px;
+  color: #333;
+  line-height: 150%;
 }
 
 /* Header Section */
@@ -24,10 +29,10 @@ header {
   background-repeat: no-repeat;
   background-size: contain;
   display: flex;
-  width: 100%;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
 }
 
 .parrot {
@@ -45,7 +50,7 @@ header {
 }
 
 .header-text p {
-  font: 600 12px Poppins, sans-serif;
+  font: 12px Poppins, sans-serif;
   color: #fff;
   margin-top: 0;
 }
@@ -57,18 +62,8 @@ main {
   border-color: rgba(37, 47, 66, 1);
   border-style: solid;
   border-width: 4px;
-  align-self: center;
-  display: flex;
-  margin-top: 30px;
-  width: 100%;
-  max-width: 390px;
-  flex-direction: column;
-  font-size: 20px;
-  color: #333;
-  font-weight: 700;
-  text-align: center;
-  line-height: 150%;
-  padding: 10px 20px 46px;
+  padding: 10px 20px 43px;
+  margin: 15px 20px 25px;
 }
 
 .section-title {
@@ -84,15 +79,12 @@ main {
   background-color: #eff0f4;
   margin: 20px 0 5px 0;
   width: 100%;
-  align-items: start;
-  font-weight: 600;
-  padding: 20px 12px 79px;
+  padding: 10px 12px 48px;
   resize: none;
   border: none;
 }
 
 .language-container {
-  align-self: start;
   display: flex;
   align-items: center;
   gap: 13px;
@@ -101,34 +93,32 @@ main {
 }
 
 .language {
-  stroke-width: 1px;
-  border-color: rgba(188, 188, 188, 1);
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 50%;
-  align-self: stretch;
   width: 16px;
   height: 16px;
   margin: auto 0;
 }
 
 .flag {
-  aspect-ratio: 1.49;
-  object-fit: auto;
-  object-position: center;
   width: 30px;
   border-color: rgba(153, 153, 153, 1);
   border-style: solid;
   border-width: 1px;
 }
 
-.translate-btn {
+.translate-btn,
+.restart-btn {
   border: none;
   border-radius: 6px;
   background-color: #035a9d;
   margin-top: 40px;
   color: #fff;
-  padding: 16px 60px;
+  padding: 10px 60px;
   font: 24px Poppins, sans-serif;
   cursor: pointer;
+  width: 100%;
+}
+
+.translate-btn:hover,
+.restart-btn:hover {
+  opacity: 0.9;
 }
