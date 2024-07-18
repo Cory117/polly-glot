@@ -10,10 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <!-- Container -->
     <div class="container">
 
-      <!-- Header -->
       <header>
         <img class="parrot" src="/assets/parrot.png" />
         <div class="header-text">
@@ -21,90 +19,81 @@
           <p>Perfect Translation Every Time</p>
         </div>
       </header>
-      <!-- End Header -->
 
-      <!-- Main -->
       <main>
 
-        <!-- Section -->
-        <section class="text-section">
-          <h2 
-            class="section-title" 
-            id="translate-title"
-          >
-            Text to translate 👇
-          </h2>
+        <!-- Input Page -->
+        <section class="input-page">
+
+            <h2 class="section-title">Text to translate 👇</h2>
+            <textarea 
+              class="section-textarea"
+              id="input-text" 
+              placeholder="How are you?" 
+            ></textarea>
+
+            <h2 class="section-title">Select language 👇</h2>
+            <div class="languages">
+              <div class="language-container">
+                <input 
+                  type="radio" 
+                  id="french" 
+                  name="language" 
+                  value="French" 
+                  class="language" 
+                >
+                <label for="french">French</label>
+                <img src="/assets/fr-flag.png" class="flag" />
+              </div>
+              <div class="language-container">
+                <input 
+                  type="radio" 
+                  id="spanish" 
+                  name="language" 
+                  value="Spanish" 
+                  class="language" 
+                >
+                <label for="spanish">Spanish</label>
+                <img src="/assets/sp-flag.png" class="flag" />
+              </div>
+              <div class="language-container">
+                <input 
+                  type="radio" 
+                  id="japanese" 
+                  name="language" 
+                  value="Japanese" 
+                  class="language" 
+                >
+                <label for="japanese">Japanese</label>
+                <img src="/assets/jpn-flag.png" class="flag" />
+              </div>
+            </div>
+
+            <button class="translate-btn">Translate</button>
+            
+        </section>
+
+        <!-- Output Page -->
+        <section class="output-page" hidden>
+
+          <h2 class="section-title">Original Text 👇</h2>
           <textarea 
             class="section-textarea"
-            id="textarea" 
-            placeholder="How are you?" 
-            required
+            id="output-original-text"  
           ></textarea>
+
+          <h2 class="section-title">Your Translation 👇</h2>
+          <textarea 
+            class="section-textarea"
+            id="output-translated-text"  
+          ></textarea>
+
+          <button class="restart-btn">Start Over</button>
+
         </section>
-        <!-- End Section -->
-
-        <!-- Section -->
-        <section class="languages-section">
-          <h2 
-            class="section-title" 
-            id="language-title"
-          >
-            Select language 👇
-          </h2>
-          <div class="languages">
-            <div class="language-container">
-              <input 
-                type="radio" 
-                id="french" 
-                name="language" 
-                value="French" 
-                class="language" 
-                required
-              >
-              <label for="french">French</label>
-              <img src="/assets/fr-flag.png" class="flag" />
-            </div>
-            <div class="language-container">
-              <input 
-                type="radio" 
-                id="spanish" 
-                name="language" 
-                value="Spanish" 
-                class="language" 
-                required
-              >
-              <label for="spanish">Spanish</label>
-              <img src="/assets/sp-flag.png" class="flag" />
-            </div>
-            <div class="language-container">
-              <input 
-                type="radio" 
-                id="japanese" 
-                name="language" 
-                value="Japanese" 
-                class="language" 
-                required
-              >
-              <label for="japanese">Japanese</label>
-              <img src="/assets/jpn-flag.png" class="flag" />
-            </div>
-          </div>
-        </section>
-        <!-- End Section -->
-
-        <!-- Section -->
-        <section class="output-section"></section>
-        <!-- End Section -->
-
-        <!-- Buttons -->
-        <button class="translate-btn">Translate</button>
-        <!-- End Buttons -->
 
       </main>
-      <!-- End Main -->
-
     </div>
-    <!-- End Container -->
     <script type="module" src="/main.js"></script>
   </body>
 </html>
