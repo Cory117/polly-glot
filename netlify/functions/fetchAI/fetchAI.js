@@ -1,17 +1,50 @@
-// Docs on event and context https://docs.netlify.com/functions/build/#code-your-function-2
+import OpenAI from 'openai'
+
+const openai = new OpenAI({
+  apiKey: process.env.VITE_OPENAI_API_KEY
+})
+
 const handler = async (event) => {
   try {
-    const subject = event.queryStringParameters.name || 'World'
+    const {textToTranslate, selectedLanguage} = JSON.parse(event.body)
+    const response = await translate(textToTranslate, selectedLanguage)
+
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: `Hello ${subject}` }),
-      // // more keys you can return:
-      // headers: { "headerName": "headerValue", ... },
-      // isBase64Encoded: true,
+      body: JSON.stringify({response})
     }
+    
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
   }
 }
 
-module.exports = { handler }
+async function translate(textToTranslate, selectedLanguage) {
+  const messages = [
+    {
+      role: 'system',
+      content: `You can translate english text to ${selectedLanguage} like an expert.`
+    },
+    {
+      role: 'user',
+      content: `${textToTranslate}`
+    }
+  ]
+
+  try {
+    const response = await openai.chat.completions.create({
+      model: "gpt-4",
+      messages: messages,
+      temperature: 1,
+      max_tokens: 256,
+    })
+
+    const translationResponse = response.choices[0].message.content
+    return translationResponse
+
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+export { handler }

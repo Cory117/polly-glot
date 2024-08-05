@@ -1,5 +1,4 @@
 import './style.css'
-import OpenAI from 'openai'
 
 // Variables
 const translateBtn = document.querySelector('.translate-btn')
@@ -12,11 +11,11 @@ const outputOriginalText = document.getElementById('output-original-text')
 const outputTranslatedText = document.getElementById('output-translated-text')
 
 // Event Listeners 
-translateBtn.addEventListener('click', translateText)
+translateBtn.addEventListener('click', getTranslation)
 restartBtn.addEventListener('click', startOver)
 
 // Functions
-async function translateText() {
+async function getTranslation() {
   const textToTranslate = inputText.value
   let selectedLanguage
 
@@ -27,33 +26,24 @@ async function translateText() {
     }
   }
 
-  const messages = [
-    {
-      role: 'system',
-      content: `You can translate english text to ${selectedLanguage} like an expert.`
-    },
-    {
-      role: 'user',
-      content: `${textToTranslate}`
-    }
-  ]
-
   if (textToTranslate && selectedLanguage) {
     try {
-      const openai = new OpenAI({
-        dangerouslyAllowBrowser: true,
-        apiKey: import.meta.env.VITE_OPENAI_API_KEY
+      const response = await fetch('/.netlify/functions/fetchAI', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        body: JSON.stringify({
+          textToTranslate, selectedLanguage
+        })
       })
-    
-      const response = await openai.chat.completions.create({
-        model: "gpt-4",
-        messages: messages,
-        temperature: 1,
-        max_tokens: 256,
-      })
-  
-      renderText(response.choices[0].message.content)
-  
+
+      if (response.ok) {
+        const data = await response.json()
+        const translation = data.response
+        renderText(translation)
+      }
+
     } catch (err) {
         console.log(err)
     }
@@ -62,12 +52,12 @@ async function translateText() {
   }
 }
 
-function renderText(text) {
+function renderText(translation) {
   inputPage.style.display = 'none'
   outputPage.style.display = 'inline'
   outputOriginalText.textContent = inputText.value
   outputOriginalText.disabled = true
-  outputTranslatedText.textContent = text
+  outputTranslatedText.textContent = translation
   outputTranslatedText.disabled = true
 }
 
