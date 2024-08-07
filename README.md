@@ -11,5 +11,7 @@ PollyGlot translates english text into one of the three languages provided.
 - HTML
 - CSS
 - JS
-- OpenAI
+- OpenAI(gpt-4)
 - APIs
+- Frontend: Vite
+- Backend: Netlify 
