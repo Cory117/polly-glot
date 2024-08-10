@@ -5,7 +5,7 @@
 </p>
 
 ## Project Description 
-PollyGlot translates english text into one of the three languages provided.
+PollyGlot is an AI translation app that takes your text input and translates it into the language selected. It gets the translation using OpenAI(gpt-4) model. With the use of netlify serverless functions on the backend the API key is hidden for safe usage.
 
 ## Technologies Used 
 - HTML
